@@ -7,6 +7,7 @@ type InputProps = {
 	name: string;
 	value: string;
 	errorMessage?: string;
+	placeholder?: string;
 };
 
 export default function HomeComponent() {
@@ -14,6 +15,7 @@ export default function HomeComponent() {
 		name: "email",
 		value: "",
 		errorMessage: "",
+		placeholder: "メールアドレスを入力してください",
 	});
 	const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
