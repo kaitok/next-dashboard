@@ -10,8 +10,18 @@ type TextInputProps = {
 const TextInput = ({ name, label, value, onChange }: TextInputProps) => {
 	return (
 		<>
-			<label htmlFor={name}>{label}</label>
-			<input type="text" name={name} value={value} onChange={onChange} />
+			<div className="flex flex-col gap-1">
+				<label htmlFor={name} className="font-bold text-sm">
+					{label}
+				</label>
+				<input
+					type="text"
+					name={name}
+					value={value}
+					onChange={onChange}
+					className="border-1 border-gray-300 rounded-sm p-1"
+				/>
+			</div>
 		</>
 	);
 };
