@@ -1,9 +1,21 @@
 import type { ChangeEventHandler } from "react";
 
 const TextInput = ({
+	name,
+	label,
 	value,
 	onChange,
-}: { value: string; onChange: ChangeEventHandler<HTMLInputElement> }) => {
-	return <input type="text" value={value} onChange={onChange} />;
+}: {
+	name: string;
+	label: string;
+	value: string;
+	onChange: ChangeEventHandler<HTMLInputElement>;
+}) => {
+	return (
+		<>
+			<label htmlFor={name}>{label}</label>
+			<input type="text" name={name} value={value} onChange={onChange} />
+		</>
+	);
 };
 export default TextInput;

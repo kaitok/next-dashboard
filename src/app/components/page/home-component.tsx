@@ -6,8 +6,12 @@ export default function HomeComponent() {
 	const [value, setValue] = useState("Hello, World!");
 	return (
 		<div className="flex">
-			Input:
-			<TextInput value={value} onChange={(e) => setValue(e.target.value)} />
+			<TextInput
+				name={"input"}
+				label={"Input"}
+				value={value}
+				onChange={(e) => setValue(e.target.value)}
+			/>
 		</div>
 	);
 }
