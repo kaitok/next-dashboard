@@ -10,11 +10,21 @@ type InputProps = {
 };
 
 export default function HomeComponent() {
-	const [value, setValue] = useState("Hello, World!");
-	const email: InputProps = {
+	const [email, setEmail] = useState<InputProps>({
 		name: "email",
-		value: "email@example.com",
-		errorMessage: "メールアドレスが不正です",
+		value: "",
+		errorMessage: "",
+	});
+	const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+		setEmail({
+			...email,
+			value,
+			errorMessage: isValidEmail
+				? ""
+				: "メールアドレスの形式が正しくありません",
+		});
 	};
 	return (
 		<div className="flex justify-center py-32">
@@ -22,8 +32,9 @@ export default function HomeComponent() {
 				<InputLabel label="ラベル" name={email.name} />
 				<InputField
 					name={email.name}
-					value={value}
-					onChange={(e) => setValue(e.target.value)}
+					value={email.value}
+					onChange={onChangeEmail}
+					errorMessage={email.errorMessage}
 				/>
 			</div>
 		</div>

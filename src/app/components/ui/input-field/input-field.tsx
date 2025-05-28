@@ -4,14 +4,14 @@ type InputFieldProps = {
 	name: string;
 	value: string;
 	onChange: ChangeEventHandler<HTMLInputElement>;
-	message?: string;
+	errorMessage?: string;
 };
 
 export const InputField = ({
 	name,
 	value,
 	onChange,
-	message,
+	errorMessage,
 }: InputFieldProps) => {
 	return (
 		<>
@@ -22,7 +22,7 @@ export const InputField = ({
 				onChange={onChange}
 				className="border-1 border-gray-300 rounded-sm p-1"
 			/>
-			<span>{message}</span>
+			{value && <span>{errorMessage}</span>}
 		</>
 	);
 };
